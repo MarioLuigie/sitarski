@@ -2,7 +2,7 @@ import type { Config } from 'tailwindcss'
 import colors from 'tailwindcss/colors'
 import plugin from 'tailwindcss/plugin'
 
-const BASE = 'slate'
+const BASE = 'neutral'
 const ACCENT = 'lime'
 
 const config = {

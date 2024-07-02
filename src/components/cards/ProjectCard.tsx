@@ -23,6 +23,10 @@ export default function ProjectCard({
 	profile?: boolean
 }) {
 	debug(8)
+	const backgroundImageUrl = project.images[0]?.url
+		? transformImageUrl(project.images[0].url, 'h_300')
+		: null
+
 	return (
 		<ArwPaper
 			accent
@@ -32,10 +36,9 @@ export default function ProjectCard({
 			<div
 				className="absolute inset-0 group-hover:opacity-80 transition"
 				style={{
-					backgroundImage: `url(${transformImageUrl(
-						project.images[0].url,
-						'h_300'
-					)})`,
+					backgroundImage: backgroundImageUrl
+						? `url(${backgroundImageUrl})`
+						: 'none',
 					backgroundSize: 'cover',
 					backgroundPosition: 'center',
 					backgroundRepeat: 'no-repeat',

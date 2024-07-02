@@ -52,7 +52,7 @@ export default async function ProjectPage({
 	return (
 		current && (
 			<ArwContainer>
-				<ArwPaper grow accent className="px-5 pb-5">
+				<ArwPaper grow className="px-5 pb-5">
 					<ArwFlex row className="justify-between items-start">
 						<ArwFlex row>
 							<ArwTitle>{current.title}</ArwTitle>

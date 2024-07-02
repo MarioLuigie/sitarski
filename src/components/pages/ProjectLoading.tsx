@@ -14,7 +14,7 @@ export default function ProjectLoading() {
 	debug(4)
 	return (
 		<ArwContainer>
-			<ArwPaper grow accent className="px-5 pb-5">
+			<ArwPaper grow className="px-5 pb-5">
 				<ArwFlex row className="justify-between items-start">
 					<ArwTitle>Loading...</ArwTitle>
 					<Navigation className="mt-1" />

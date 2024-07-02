@@ -8,7 +8,7 @@ import { Dialog, DialogContent } from '@/components/ui/dialog'
 import Navigation from '@/components/shared/Navigation'
 // lib
 import { IImage } from '@/lib/models/image.model'
-import { loadImage } from '@/lib/utils'
+// import { loadImage } from '@/lib/utils'
 import { debug } from '@/lib/utils/dev'
 
 export default function ImageDialog({
@@ -61,7 +61,6 @@ export default function ImageDialog({
 							alt={image?.name}
 							width={1400}
 							height={1400}
-							loader={loadImage('q_50')}
 							onLoad={handleImageLoad}
 							className="w-auto h-auto max-h-screen md:max-h-screen-4 object-cover"
 							priority
