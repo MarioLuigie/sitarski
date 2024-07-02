@@ -105,10 +105,11 @@ export async function getProjects(
 		const projects = await ProjectModel.find(projectQuery)
 			.populate('user', '_id username photo')
 			.populate('category')
+			.populate('images')
 			.collation({ locale: 'pl', strength: 1 })
 			.sort(sort)
 
-		debug(3, 0, projects)
+		debug(3, 1, projects)
 		return { success: true, data: deepClone(projects) }
 	} catch (error) {
 		handleError(error)

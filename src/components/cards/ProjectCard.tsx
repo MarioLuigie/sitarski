@@ -6,7 +6,7 @@ import { ArwFlex, ArwPaper, ArwText, ArwTitle } from '@/components/arw'
 import Manipulations from '@/components/shared/Manipulations'
 // lib
 import { debug } from '@/lib/utils/dev'
-import { generateUrl } from '@/lib/utils'
+import { generateUrl, transformImageUrl } from '@/lib/utils'
 import { ICategory } from '@/lib/models/category.model'
 import { IProject } from '@/lib/models/project.model'
 import { routes } from '@/lib/constants/paths'
@@ -27,8 +27,20 @@ export default function ProjectCard({
 		<ArwPaper
 			accent
 			square
-			className="relative justify-between px-5 py-4 group max-lg:aspect-video"
+			className="relative justify-between px-5 py-4 group max-lg:aspect-video overflow-hidden"
 		>
+			<div
+				className="absolute inset-0 group-hover:opacity-80 transition"
+				style={{
+					backgroundImage: `url(${transformImageUrl(
+						project.images[0].url,
+						'h_300'
+					)})`,
+					backgroundSize: 'cover',
+					backgroundPosition: 'center',
+					backgroundRepeat: 'no-repeat',
+				}}
+			/>
 			<Link
 				href={generateUrl(
 					[profile ? routes.PROFILE : routes.PROJECTS, project.slug],
@@ -37,7 +49,7 @@ export default function ProjectCard({
 				className="absolute inset-0 z-20"
 			/>
 			<ArwFlex row between className="relative">
-				<ArwTitle className="group-hover:text-accent transition cursor-pointer relative z-10">
+				<ArwTitle className="cursor-pointer relative drop-shadow-lg z-10 text-white">
 					{project.title}
 				</ArwTitle>
 				<When condition={profile}>
@@ -48,7 +60,9 @@ export default function ProjectCard({
 					/>
 				</When>
 			</ArwFlex>
-			<ArwText className="relative z-10">{project.info}</ArwText>
+			<ArwText className="relative z-10 transition opacity-0 group-hover:opacity-100 text-white drop-shadow-lg">
+				{project.info}
+			</ArwText>
 		</ArwPaper>
 	)
 }
