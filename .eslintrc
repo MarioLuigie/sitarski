@@ -1,0 +1,10 @@
+{
+	"extends": ["eslint:recommended", "next"],
+	"globals": {
+		"React": "writable"
+	},
+	"rules": {
+		"no-mixed-spaces-and-tabs": "off",
+		// "no-unused-vars": "off"
+	}
+}
