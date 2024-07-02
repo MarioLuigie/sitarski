@@ -9,6 +9,7 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import Menu from '@/components/layout/Menu'
 // lib
 import { icons } from '@/lib/constants/paths'
+import Image from 'next/image'
 
 export default function Header() {
 	const [isSheetOpen, setIsSheetOpen] = useState(false)
@@ -17,33 +18,32 @@ export default function Header() {
 			<div className="container flex justify-between p-0 xl:px-4">
 				{/* left */}
 				<div className="flex items-center">
-					<h1 className="text-2xl font-bold">
-						<ArwLink href={`/`}>ARW</ArwLink>
-					</h1>
+					<ArwLink href={`/`}>
+						<Image
+							src="/images/logo.jpg"
+							alt="Logo"
+							width={132}
+							height={75}
+						/>
+					</ArwLink>
 				</div>
 
 				{/* center */}
 				<div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex-center">
-					<SignedIn>
-						<Sheet
-							open={isSheetOpen}
-							onOpenChange={setIsSheetOpen}
-							modal={false}
+					<Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen} modal={false}>
+						<SheetTrigger>
+							<ArwIcon
+								src={icons.MENU}
+								className="hover:text-accent transtion"
+							/>
+						</SheetTrigger>
+						<SheetContent
+							side="top"
+							className="backdrop-blur-md bg-base-200/50 dark:bg-base-950/50 border-none flex-center min-h-[75px]"
 						>
-							<SheetTrigger>
-								<ArwIcon
-									src={icons.MENU}
-									className="hover:text-accent transtion"
-								/>
-							</SheetTrigger>
-							<SheetContent
-								side="top"
-								className="backdrop-blur-md bg-base-200/50 dark:bg-base-950/50 border-none flex-center min-h-[75px]"
-							>
-								<Menu setOpen={setIsSheetOpen} />
-							</SheetContent>
-						</Sheet>
-					</SignedIn>
+							<Menu setOpen={setIsSheetOpen} />
+						</SheetContent>
+					</Sheet>
 				</div>
 
 				{/* right */}

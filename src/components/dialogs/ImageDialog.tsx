@@ -67,7 +67,7 @@ export default function ImageDialog({
 							priority
 						/>
 						<ArwText className="absolute bottom-4 text-white drop-shadow-lg">
-							{isImageLoaded ? `${image?.name}` : 'Loading...'}
+							{isImageLoaded ? `` : ''}
 						</ArwText>
 					</div>
 				</div>
