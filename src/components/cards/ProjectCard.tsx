@@ -24,14 +24,13 @@ export default function ProjectCard({
 }) {
 	debug(8)
 	const backgroundImageUrl = project.images[0]?.url
-		? transformImageUrl(project.images[0].url, 'h_300')
+		? transformImageUrl(project.images[0].url, 'h_400')
 		: null
 
 	return (
 		<ArwPaper
 			accent
-			square
-			className="relative justify-between px-5 py-4 group max-lg:aspect-video overflow-hidden"
+			className="relative justify-between px-5 py-4 group aspect-video overflow-hidden"
 		>
 			<div
 				className="absolute inset-0 group-hover:opacity-80 transition"

@@ -19,7 +19,7 @@ export default async function ProjectsList({
 }) {
 	debug(7)
 	return (
-		<ArwGrid className="arw-grid-auto-300 gap-3 content-start">
+		<ArwGrid className="arw-grid-projects gap-3 content-start">
 			{projects.map((project: IProject) => (
 				<ProjectCard
 					key={project._id}

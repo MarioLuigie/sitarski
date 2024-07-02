@@ -109,7 +109,7 @@ export async function getProjects(
 			.collation({ locale: 'pl', strength: 1 })
 			.sort(sort)
 
-		debug(3, 1, projects)
+		debug(3, 0, projects)
 		return { success: true, data: deepClone(projects) }
 	} catch (error) {
 		handleError(error)
