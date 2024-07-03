@@ -1,7 +1,6 @@
 'use client'
 // modules
 import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
-import { useMediaQuery } from 'react-responsive'
 import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -10,13 +9,14 @@ import { ArwLink, ArwIcon } from '@/components/arw'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import Menu from '@/components/layout/Menu'
 // lib
-import { icons } from '@/lib/constants/paths'
 import { debug } from '@/lib/utils/dev'
+import { icons } from '@/lib/constants/paths'
+import { useMobile } from '@/lib/utils/hooks'
 
 export default function Header() {
 	const [isSheetOpen, setIsSheetOpen] = useState(false)
-	const isMobile = useMediaQuery({ maxWidth: 768 })
-	debug(9, 9, isMobile)
+	const isMobile = useMobile()
+	debug(0, 0, isMobile)
 	return (
 		<header className="sticky z-50 top-0 backdrop-blur-md bg-base-200/50 dark:bg-base-950/50  shadow-md p-4 h-[75px] flex-center">
 			<div className="container flex justify-between p-0 xl:px-4">
