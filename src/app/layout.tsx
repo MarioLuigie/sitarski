@@ -26,8 +26,8 @@ const roboto = Roboto({
 
 // metadata
 export const metadata: Metadata = {
-	title: 'ARW Next App Template',
-	description: 'Projects CRUD',
+	title: 'Pracownia architektoniczna Bartłomiej K. Sitarski',
+	description: 'Pracownia architektoniczna w Krakowie',
 }
 
 export default function RootLayout({
