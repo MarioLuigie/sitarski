@@ -80,7 +80,7 @@ export default function ImageDialog({
 						/>
 						<When condition={!isImageLoaded}>
 							<ArwFlex className="absolute left-6 top-6">
-								<ArwSpinner className="absolute h-8 w-8" />
+								<ArwSpinner accent className="absolute h-8 w-8 border-4 border-t-4" />
 							</ArwFlex>
 						</When>
 					</div>
