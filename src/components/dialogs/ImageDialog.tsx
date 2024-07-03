@@ -1,15 +1,15 @@
 'use client'
 // modules
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef, MutableRefObject } from 'react'
 // components
-import { ArwText } from '@/components/arw'
+import { ArwFlex, ArwSpinner } from '@/components/arw'
 import { Dialog, DialogContent } from '@/components/ui/dialog'
 import Navigation from '@/components/shared/Navigation'
 // lib
 import { IImage } from '@/lib/models/image.model'
-// import { loadImage } from '@/lib/utils'
 import { debug } from '@/lib/utils/dev'
+import { When } from 'react-if'
 
 export default function ImageDialog({
 	isOpen,
@@ -30,11 +30,24 @@ export default function ImageDialog({
 	const image = images[selectedIndex]
 	const [isImageLoaded, setIsImageLoaded] = useState(false)
 
+	const timerRef = useRef<any>(undefined)
+
 	useEffect(() => {
-		setIsImageLoaded(false)
-	}, [selectedIndex])
+		timerRef.current = setTimeout(() => {
+			setIsImageLoaded(false)
+		}, 500)
+
+		return () => {
+			if (timerRef.current) {
+				clearTimeout(timerRef.current)
+			}
+		}
+	}, [selectedIndex, setIsImageLoaded])
 
 	const handleImageLoad = () => {
+		if (timerRef.current) {
+			clearTimeout(timerRef.current)
+		}
 		setIsImageLoaded(true)
 	}
 
@@ -65,9 +78,11 @@ export default function ImageDialog({
 							className="w-auto h-auto max-h-screen md:max-h-screen-4 object-cover"
 							priority
 						/>
-						<ArwText className="absolute bottom-4 text-white drop-shadow-lg">
-							{isImageLoaded ? `` : ''}
-						</ArwText>
+						<When condition={!isImageLoaded}>
+							<ArwFlex className="absolute left-6 top-6">
+								<ArwSpinner className="absolute h-8 w-8" />
+							</ArwFlex>
+						</When>
 					</div>
 				</div>
 			</DialogContent>
