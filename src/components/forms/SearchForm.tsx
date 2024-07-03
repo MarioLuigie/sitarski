@@ -105,17 +105,6 @@ export default function SearchForm({
 						/>
 					)}
 				/>
-				<FormField
-					name="profile"
-					control={form.control}
-					render={({ field }) => (
-						<ArwCheckbox
-							checked={field.value}
-							onCheckedChange={field.onChange}
-							label="Show only my projects"
-						/>
-					)}
-				/>
 			</ArwFlex>
 			<ArwFlex>
 				<Button variant="accent">Search</Button>
