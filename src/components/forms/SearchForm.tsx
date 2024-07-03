@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation'
 import { zodResolver } from '@hookform/resolvers/zod'
 // components
 import {
-	ArwCheckbox,
 	ArwFlex,
 	ArwForm,
 	ArwSelect,
