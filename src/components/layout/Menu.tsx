@@ -20,8 +20,8 @@ const MenuItem = ({
 }) => {
 	const pathname = usePathname()
 	const isMobile = useMediaQuery({ maxWidth: 768 })
-	const { isSignedIn } = useAuth()
 	const isActive = link.route.split('?')[0] === pathname
+	const { isSignedIn } = useAuth()
 	const handleClick = () => {
 		if (isMobile) {
 			setOpen(false)
