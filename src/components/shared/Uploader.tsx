@@ -4,7 +4,7 @@ import { Else, If, Then } from 'react-if'
 import { FileWithPath, useDropzone } from 'react-dropzone'
 import { useCallback } from 'react'
 // components
-import { ArwIcon, ArwText } from '@/components/arw'
+import { ArwFlex, ArwIcon, ArwText } from '@/components/arw'
 import { Button } from '@/components/ui/button'
 // lib
 import { icons } from '@/lib/constants/paths'
@@ -32,7 +32,7 @@ export default function Uploader({
 	return (
 		<div
 			{...getRootProps()}
-			className="w-full h-full cursor-pointer overflow-hidden rounded-md border border-base-400 dark:border-base-800"
+			className="w-full h-full cursor-pointer overflow-hidden rounded-md"
 		>
 			<input {...getInputProps()} className="z-50" />
 			<If condition={files.length > 0}>
@@ -45,8 +45,8 @@ export default function Uploader({
 									key={file.path}
 									src={URL.createObjectURL(file)}
 									alt="image"
-									width={50}
-									height={50}
+									width={100}
+									height={100}
 									style={{ flex: `1 1 ${flexBasis}`, height: 'auto' }}
 									className="object-cover object-center"
 								/>
@@ -55,12 +55,16 @@ export default function Uploader({
 					</div>
 				</Then>
 				<Else>
-					<div className="h-full flex flex-col items-center justify-between p-3 bg-accent">
-						<ArwIcon src={icons.UPLOAD} size={40} />
-						<ArwText className="text-xs">Drag and drop or</ArwText>
-						<Button type="button" className="w-full text-xs">
-							Select image(s)
-						</Button>
+					<div className="h-full flex flex-col justify-between p-3 bg-accent">
+						<ArwFlex center className="grow overflow-hidden">
+							<ArwIcon src={icons.UPLOAD} size={80} />
+						</ArwFlex>
+						<ArwFlex center>
+							<ArwText className="text-sm">Drag and drop or</ArwText>
+							<Button type="button" className="w-full text-sm">
+								Select image(s)
+							</Button>
+						</ArwFlex>
 					</div>
 				</Else>
 			</If>
