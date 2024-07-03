@@ -75,7 +75,7 @@ export default function ImageList({
 
 	return (
 		<>
-			<ArwGrid className="grow arw-grid-images content-start gap-3">
+			<ArwGrid className="grow arw-grid-images max-sm:flex flex-col content-start gap-3">
 				<When condition={project?.images.length !== 0}>
 					{project?.images?.map((image, index) => (
 						<ImageCard
