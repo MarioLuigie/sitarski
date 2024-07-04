@@ -30,7 +30,7 @@ export async function createProject(
 		if (validationErrors) {
 			return {
 				success: false,
-				errors: validationErrors,
+				error: validationErrors,
 			}
 		}
 
@@ -54,7 +54,7 @@ export async function createProject(
 		return { success: true, data: deepClone(newProject) }
 	} catch (error) {
 		handleError(error)
-		return { success: false, errors: { error: 'An error occurred' } }
+		return { success: false, error: { error: 'An error occurred' } }
 	}
 }
 
@@ -113,7 +113,7 @@ export async function getProjects(
 		return { success: true, data: deepClone(projects) }
 	} catch (error) {
 		handleError(error)
-		return { success: false, data: [], errors: { error: 'An error occurred' } }
+		return { success: false, data: [], error: { error: 'An error occurred' } }
 	}
 }
 
@@ -140,7 +140,7 @@ export async function getProjectBySlug(
 			return {
 				success: false,
 				data: { prev: null, current: null, next: null },
-				errors: { error: 'Unauthorized access to this project' },
+				error: { error: 'Unauthorized access to this project' },
 			}
 		}
 		const currentProject = await ProjectModel.findOne({ slug })
@@ -162,7 +162,7 @@ export async function getProjectBySlug(
 		return {
 			success: false,
 			data: { prev: null, current: null, next: null },
-			errors: { error: 'An error occurred' },
+			error: { error: 'An error occurred' },
 		}
 	}
 }
@@ -202,7 +202,7 @@ export async function updateProject(
 		return { success: true, data: deepClone(updatedProject) }
 	} catch (error) {
 		handleError(error)
-		return { success: false, errors: { error: 'An error occurred' } }
+		return { success: false, error: { error: 'An error occurred' } }
 	}
 }
 
@@ -233,7 +233,7 @@ export async function addImageToProject({
 		return { success: true, data: deepClone(updatedProject) }
 	} catch (error) {
 		handleError(error)
-		return { success: false, errors: { error: 'An error occurred' } }
+		return { success: false, error: { error: 'An error occurred' } }
 	}
 }
 
@@ -247,7 +247,7 @@ export async function removeImageFromProject(
 
 		const deletedImage = await ImageModel.findByIdAndDelete(image._id)
 		if (!deletedImage) {
-			return { success: false, errors: { error: 'Image not found' } }
+			return { success: false, error: { error: 'Image not found' } }
 		}
 		const updatedProject = await ProjectModel.findOneAndUpdate(
 			{ slug },
@@ -261,7 +261,7 @@ export async function removeImageFromProject(
 		return { success: true, data: deepClone(updatedProject) }
 	} catch (error) {
 		handleError(error)
-		return { success: false, errors: { error: 'An error occurred' } }
+		return { success: false, error: { error: 'An error occurred' } }
 	}
 }
 
@@ -301,6 +301,6 @@ export async function deleteProject(
 		return { success: true, data: deepClone(deletedProject) }
 	} catch (error) {
 		handleError(error)
-		return { success: false, errors: { error: 'An error occurred' } }
+		return { success: false, error: { error: 'An error occurred' } }
 	}
 }
