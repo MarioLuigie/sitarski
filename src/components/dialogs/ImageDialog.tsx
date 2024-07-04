@@ -1,6 +1,7 @@
 'use client'
 // modules
 import Image from 'next/image'
+import { When } from 'react-if'
 import { useEffect, useState, useRef, MutableRefObject } from 'react'
 // components
 import { ArwFlex, ArwSpinner } from '@/components/arw'
@@ -9,7 +10,6 @@ import Navigation from '@/components/shared/Navigation'
 // lib
 import { IImage } from '@/lib/models/image.model'
 import { debug } from '@/lib/utils/dev'
-import { When } from 'react-if'
 
 export default function ImageDialog({
 	isOpen,

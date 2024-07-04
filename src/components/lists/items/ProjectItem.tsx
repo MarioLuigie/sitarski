@@ -22,7 +22,7 @@ export default function ProjectCard({
 	searchParams?: any
 	profile?: boolean
 }) {
-	debug(8)
+	debug(7)
 	const backgroundImageUrl = project.images[0]?.url
 		? transformImageUrl(project.images[0].url, 'h_400')
 		: null

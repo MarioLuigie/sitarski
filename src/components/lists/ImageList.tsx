@@ -4,7 +4,7 @@ import { When } from 'react-if'
 import { useEffect, useState } from 'react'
 // components
 import { ArwGrid } from '@/components/arw'
-import ImageCard from '@/components/cards/ImageCard'
+import ImageCard from '@/components/lists/items/ImageItem'
 import ImageDialog from '@/components/dialogs/ImageDialog'
 import ImageForm from '@/components/forms/ImageForm'
 // lib
@@ -21,7 +21,7 @@ export default function ImageList({
 	profile: boolean
 	searchParams: any
 }) {
-	debug(7)
+	debug(8)
 	// State of the modal
 	const [isDialogOpen, setIsDialogOpen] = useState(false)
 	// State of the selected image index
@@ -76,6 +76,9 @@ export default function ImageList({
 	return (
 		<>
 			<ArwGrid className="grow arw-grid-images max-sm:flex flex-col content-start gap-3">
+				<When condition={profile}>
+					<ImageForm project={project} />
+				</When>
 				<When condition={project?.images.length !== 0}>
 					{project?.images?.map((image, index) => (
 						<ImageCard
@@ -86,9 +89,6 @@ export default function ImageList({
 							handleOpen={() => handleOpen(index)}
 						/>
 					))}
-				</When>
-				<When condition={profile}>
-					<ImageForm project={project} />
 				</When>
 			</ArwGrid>
 			<ImageDialog
